@@ -1,6 +1,6 @@
 # Úvod
 
-Zásuvný modul 'Inteligentní odpisy a přesuny' byl vytvořen jako nástroj pro systematické vyhledávání jednotek vhodných k odepsání z knižního fondu. Využitím tohoto nástroje se knihovny mohou vybírat kandidáty na vyřazení podle souboru stanovených parametrů. Výběr není subjektivní či pocitový, ale je založen na reálných datech o jednotkách jako je např. stáří jednotky či frekvence výpůjček v určitém období.
+Zásuvný modul 'Inteligentní odpisy a přesuny' byl vytvořen jako nástroj pro systematické vyhledávání jednotek vhodných k odepsání z knižního fondu. Využitím tohoto nástroje si knihovny mohou vybírat kandidáty na vyřazení podle souboru stanovených parametrů. Výběr není subjektivní či pocitový, ale je založen na reálných datech o jednotkách jako je např. stáří jednotky či frekvence výpůjček v určitém období.
 
 Pro skutečně snadnou práci lze nastavení vyhledávacích parametrů uložit, pojmenovat, uvést požadovaný počet jednotek a celou předvolbu případně doplnit i delším slovním popisem. Uložené předvolby se dají snadno duplikovat a vytvářet tak velmi rychle různé varianty nastavení. Vyhledané výsledky lze pochopitelně stáhnout ve standardních formátech souborů a využít je k dalšímu zpracovaní (např. vytisknout v tabulkovém procesoru - jako LibreCalc nebo MS Excel).
 
@@ -32,3 +32,5 @@ Jakmile je nastavení připraveno, budete potřebovat změnit systémovou konfig
 ## Nastavení specifické pro modul inteligentních odpisů
 
 Před prvním spuštěním nástroje nejprve zvolte položku "Nastavit" v menu "Akce". Konfigurační stránka umožní vybrat vhodné číselníky autorizovaných hodnot, pomocí nichž budete následně vytvářet a ukládat uživatelské předvolby výběru odepisovaných jednotek. Pokud některý z číselníků nepoužíváte, ponechte ve výběru hodnotu '(neuvedeno)'.
+
+Více informací, jak s nástrojem pracovat naleznete na [wiki](https://github.com/open-source-knihovna/SmartWithdrawals/wiki)
