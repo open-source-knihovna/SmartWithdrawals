@@ -14,9 +14,9 @@ Pro využití zásuvných modulů je nutné, aby správce systému tuto možnost
 
 Nejprve je zapotřebí provést několik změn ve vaší instalaci Kohy:
 
-* V souboru koha-conf.xml změňte '<enable_plugins>0</enable_plugins>' na '<enable_plugins>1</enable_plugins>'
-* Ověřte, že cesta k souborům ve složce '<pluginsdir>' existuje, je správná a že do této složky může webserver zapisovat
-* Pokud je hodnota '<pluginsdir>' např. '/var/lib/kohadev/plugins', vložte následující kód do konfigurace webserveru:
+* V souboru koha-conf.xml změňte `<enable_plugins>0</enable_plugins>` na `<enable_plugins>1</enable_plugins>`
+* Ověřte, že cesta k souborům ve složce `<pluginsdir>` existuje, je správná a že do této složky může webserver zapisovat
+* Pokud je hodnota `<pluginsdir>` např. `/var/lib/kohadev/plugins`, vložte následující kód do konfigurace webserveru:
 ```
 Alias /plugin/ "/var/lib/koha/kohadev/plugins/"
 <Directory "/var/lib/koha/kohadev/plugins">
