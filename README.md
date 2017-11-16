@@ -1,8 +1,8 @@
 # Úvod
 
-Zásuvný modul 'Inteligentní odpisy a přesuny' byl vytvořen jako nástroj pro cílené vyhledávání jednotek vhodných k odepsání z knižního fondu. Využitím tohoto nástroje se knihovny mohou zbavit výběru založeného na pocitech a znalosti prostředí knihovny. Takový výběr nemusel být vždy optimální např. z pohledu skutečné historie jednotek. Tímto nástojem lze efektivně nacházet ty jednotky, které jsou k odpisu nejvhodnější. Výběr je tak založen na reálně doložitelných údajích jako je např. stáří jednotky či frekvence výpůjček v určitém období.
+Zásuvný modul 'Inteligentní odpisy a přesuny' byl vytvořen jako nástroj pro systematické vyhledávání jednotek vhodných k odepsání z knižního fondu. Využitím tohoto nástroje se knihovny mohou vybírat kandidáty na vyřazení podle souboru stanovených parametrů. Výběr není subjektivní či pocitový, ale je založen na reálných datech o jednotkách jako je např. stáří jednotky či frekvence výpůjček v určitém období.
 
-Pro skutečně snadnou práci lze nastavení vyhledávacích parametrů uložit, pojmenovat, uvést požadovaný počet jednotek a celou předvolbu případně doplnit i delším slovním popisem. Uložené předvolby se dají snadno duplikovat a vytvářet tak velmi rychle různé varianty nastavení. Vyhledané výsledky lze pochopitelně stáhnout ve standardních formátech souborů a využít je k dalšímu zpracovaní (např. vytisknout v tabulkovém procesoru - Excelu).
+Pro skutečně snadnou práci lze nastavení vyhledávacích parametrů uložit, pojmenovat, uvést požadovaný počet jednotek a celou předvolbu případně doplnit i delším slovním popisem. Uložené předvolby se dají snadno duplikovat a vytvářet tak velmi rychle různé varianty nastavení. Vyhledané výsledky lze pochopitelně stáhnout ve standardních formátech souborů a využít je k dalšímu zpracovaní (např. vytisknout v tabulkovém procesoru - jako LibreCalc nebo MS Excel).
 
 # Instalace
 
