@@ -1,0 +1,76 @@
+[% INCLUDE 'doc-head-open.inc' %]
+ <title>Koha: inteligentní odpisy a přesuny: Konfigurace</title>
+[% INCLUDE 'doc-head-close.inc' %]
+ <link href="[% PLUGIN_PATH %]/css/smart-withdrawals.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+[% INCLUDE 'header.inc' %]
+<div id="breadcrumbs">
+    <a href="/cgi-bin/koha/mainpage.pl">Koha</a> &rsaquo;
+    <a href="/cgi-bin/koha/tools/tools-home.pl">Nástroje</a> &rsaquo;
+    <a href="/cgi-bin/koha/plugins/plugins-home.pl">Zásuvné moduly</a> &rsaquo;
+    <a href="/cgi-bin/koha/plugins/run.pl?class=Koha::Plugin::Com::RBitTechnology::SmartWithdrawals&amp;method=tool">Odpisy a přesuny</a> &rsaquo;
+    Konfigurace
+</div>
+
+<div id="doc3" class="rbit-plugin">
+    <div class="logo-links">
+        <a href="https://www.koha.cz" target="_blank"><img src="[% PLUGIN_PATH %]/koha_cz.png" /></a>
+        <a href="https://www.koha-v-knihovne.cz" target="_blank"><img src="[% PLUGIN_PATH %]/logo.png" /></a>
+        <a href="https://www.mkcr.cz" target="_blank"><img src="[% PLUGIN_PATH %]/logo_mkcr.png" /></a>
+    </div>
+
+    <h3>Inteligentní odpisy a přesuny: Konfigurace</h3>
+
+    <!-- Notice our form here has no 'action', this is good, it means that our forms will always get passed back to 'plugins/run.pl'. -->
+    <form method="get">
+        <!-- Always pass these two parameters so the plugin system knows what to execute! -->
+        <input type="hidden" name="class" value="[% CLASS %]"/>
+        <input type="hidden" name="method" value="[% METHOD %]"/>
+
+        <fieldset class="rows">
+        <legend>Číselníky autorizovaných hodnot</legend>
+        <ol>
+            <li>
+                <label class="form-field-label" for="ccode">Kód sbírky: </label>
+                <select name="ccode">
+                    [% FOREACH category IN categories %]
+                        [% description = (category == "?" ? '(neuvedeno)' : category) %]
+                        [% selected = (category == ccode ? ' selected="selected"' : '') %]
+                        <option value="[% category %]"[% selected %]>[% description %]</option>
+                    [% END %]
+                </select>
+            </li>
+
+            <li>
+                <label class="form-field-label" for="acqsource">Zdroj akvizice: </label>
+                <select name="acqsource">
+                    [% FOREACH category IN categories %]
+                        [% description = (category == "?" ? '(neuvedeno)' : category) %]
+                        [% selected = (category == acqsource ? ' selected="selected"' : '') %]
+                        <option value="[% category %]"[% selected %]>[% description %]</option>
+                    [% END %]
+                </select>
+            </li>
+
+            <li>
+                <label class="form-field-label" for="location">Lokace v rámci oddělení: </label>
+                <select name="location">
+                    [% FOREACH category IN categories %]
+                        [% description = (category == "?" ? '(neuvedeno)' : category) %]
+                        [% selected = (category == location ? ' selected="selected"' : '') %]
+                        <option value="[% category %]"[% selected %]>[% description %]</option>
+                    [% END %]
+                </select>
+            </li>
+
+        </ol>
+        </fieldset>
+
+        <p>
+            <input type="hidden" name="save" value="1" />
+            <input type="submit" value="Uložit nastavení" />
+        </p>
+
+    </form>
+[% INCLUDE 'intranet-bottom.inc' %]

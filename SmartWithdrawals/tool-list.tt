@@ -1,0 +1,92 @@
+[% USE KohaDates %]
+[% SET footerjs = 1 %]
+[% INCLUDE 'doc-head-open.inc' %]
+ <title>Koha: inteligentní odpisy a přesuny: Uložené předvolby</title>
+[% INCLUDE 'doc-head-close.inc' %]
+ <link href="[% PLUGIN_PATH %]/css/smart-withdrawals.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+[% INCLUDE 'header.inc' %]
+<div id="breadcrumbs">
+    <a href="/cgi-bin/koha/mainpage.pl">Koha</a> &rsaquo;
+    <a href="/cgi-bin/koha/tools/tools-home.pl">Nástroje</a> &rsaquo;
+    <a href="/cgi-bin/koha/plugins/plugins-home.pl">Zásuvné moduly</a> &rsaquo;
+    <a href="/cgi-bin/koha/plugins/run.pl?class=Koha::Plugin::Com::RBitTechnology::SmartWithdrawals&amp;method=tool">Odpisy a přesuny</a> &rsaquo;
+    Uložené předvolby
+</div>
+
+<div id="doc3" class="rbit-plugin">
+    <div class="logo-links">
+        <a href="https://www.koha.cz" target="_blank"><img src="[% PLUGIN_PATH %]/koha_cz.png" /></a>
+        <a href="https://www.koha-v-knihovne.cz" target="_blank"><img src="[% PLUGIN_PATH %]/logo.png" /></a>
+        <a href="https://www.mkcr.cz" target="_blank"><img src="[% PLUGIN_PATH %]/logo_mkcr.png" /></a>
+    </div>
+
+    <div id="toolbar" class="btn-toolbar">
+            <div class="btn-group">
+                <a class="btn btn-default btn-sm" href="/cgi-bin/koha/plugins/run.pl?class=Koha::Plugin::Com::RBitTechnology::SmartWithdrawals&amp;method=tool&amp;phase=edit">
+                    <i class="fa fa-plus"></i> Nová předvolba
+                </a>
+            </div>
+    </div>
+
+    <h3>Inteligentní odpisy a přesuny: Uložené předvolby</h3>
+
+    <!-- Notice our form here has no 'action', this is good, it means that our forms will always get passed back to 'plugins/run.pl'. You could hard code it instead if you prefer -->
+    <form method="get">
+
+    <!-- Always pass these two parameters so the plugin system knows what to execute! -->
+    <input type="hidden" name="class" value="[% CLASS %]"/>
+    <input type="hidden" name="method" value="[% METHOD %]"/>
+
+    [% IF (predefs) %]
+        <table id="table_reports">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Název</th>
+                    <th>Popis</th>
+                    <th class="title-string">Vytvořeno</th>
+                    <th class="title-string">Poslední úprava</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+            [% FOREACH predef IN predefs %]
+                <tr>
+                    <td>[% predef.predef_id %]</td>
+                    <td>[% predef.name %]</td>
+                    <td>[% predef.description %]</td>
+                    <td>[% predef.date_created | $KohaDates with_hours => 1  %]</td>
+                    <td>[% predef.last_modified | $KohaDates with_hours => 1  %]</td>
+                    <td>
+                        <div class="dropup">
+                            <div class="btn-group">
+                                [%# There should be no space between these two buttons, it would render badly %]
+                                <a class="btn btn-default btn-xs" role="button"
+                                    href="/cgi-bin/koha/plugins/run.pl?class=Koha::Plugin::Com::RBitTechnology::SmartWithdrawals&amp;method=tool&amp;phase=run&amp;predef=[% predef.predef_id %]"><i
+                                    class="fa fa-play"></i> Spustit</a><a
+                                    class="btn btn-default btn-xs dropdown-toggle" id="reportactions[% predef.predef_id %]" role="button" data-toggle="dropdown"
+                                    href="#"><b class="caret"></b></a>
+                                <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="reportactions[% predef.predef_id %]">
+                                    <li><a href="/cgi-bin/koha/plugins/run.pl?class=Koha::Plugin::Com::RBitTechnology::SmartWithdrawals&amp;method=tool&amp;phase=edit&amp;predef=[% predef.predef_id %]"><i class="fa fa-pencil"></i> Upravit</a></li>
+                                    <li><a href="/cgi-bin/koha/plugins/run.pl?class=Koha::Plugin::Com::RBitTechnology::SmartWithdrawals&amp;method=tool&amp;phase=duplicate&amp;predef=[% predef.predef_id %]"><i class="fa fa-copy"></i> Duplikovat</a></li>
+                                    <li><a class="confirmdelete" title="Odstranit tuto předvolbu" href="/cgi-bin/koha/plugins/run.pl?class=Koha::Plugin::Com::RBitTechnology::SmartWithdrawals&amp;method=tool&amp;phase=delete&amp;predef=[% predef.predef_id %]"><i class="fa fa-trash"></i> Odstranit</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                <tr>
+            [% END %]
+            </tbody>
+        </table>
+    [% ELSE %]
+        <div class="dialog message">
+            <h4>Dosud neexistují žádné uložené předvolby</h4>
+            <a href="/cgi-bin/koha/plugins/run.pl?class=Koha::Plugin::Com::RBitTechnology::SmartWithdrawals&method=tool&phase=edit">Vytvořit novou předvolbu</a>
+        </div>
+    [% END %]
+
+</div>
+
+[% INCLUDE 'intranet-bottom.inc' %]

@@ -1,0 +1,93 @@
+[% SET footerjs = 1 %]
+[% INCLUDE 'doc-head-open.inc' %]
+ <title>Koha: inteligentní odpisy a přesuny: Zobrazení výsledků</title>
+[% INCLUDE 'doc-head-close.inc' %]
+ <link href="[% PLUGIN_PATH %]/css/smart-withdrawals.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+[% INCLUDE 'header.inc' %]
+<div id="breadcrumbs">
+    <a href="/cgi-bin/koha/mainpage.pl">Koha</a> &rsaquo;
+    <a href="/cgi-bin/koha/tools/tools-home.pl">Nástroje</a> &rsaquo;
+    <a href="/cgi-bin/koha/plugins/plugins-home.pl">Zásuvné moduly</a> &rsaquo;
+    <a href="/cgi-bin/koha/plugins/run.pl?class=Koha::Plugin::Com::RBitTechnology::SmartWithdrawals&amp;method=tool">Odpisy a přesuny</a> &rsaquo;
+    Zobrazení výsledků
+</div>
+
+<div id="doc3" class="rbit-plugin">
+    <div class="logo-links">
+        <a href="https://www.koha.cz" target="_blank"><img src="[% PLUGIN_PATH %]/koha_cz.png" /></a>
+        <a href="https://www.koha-v-knihovne.cz" target="_blank"><img src="[% PLUGIN_PATH %]/logo.png" /></a>
+        <a href="https://www.mkcr.cz" target="_blank"><img src="[% PLUGIN_PATH %]/logo_mkcr.png" /></a>
+    </div>
+
+    <div id="toolbar" class="btn-toolbar">
+            <div class="btn-group">
+                <a class="btn btn-default btn-sm" href="/cgi-bin/koha/plugins/run.pl?class=Koha::Plugin::Com::RBitTechnology::SmartWithdrawals&amp;method=tool&amp;phase=edit&amp;predef=[% predef %]">
+                    <i class="fa fa-pencil"></i> Upravit předvolbu
+                </a>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" id="format"><i class="fa fa-download"></i> Download <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a id="csv" href="/cgi-bin/koha/plugins/run.pl?class=Koha::Plugin::Com::RBitTechnology::SmartWithdrawals&amp;method=tool&amp;phase=export&amp;format=csv&amp;predef=[% predef %]">Hodnoty oddělené středníkem</a></li>
+                    <li><a id="csv" href="/cgi-bin/koha/plugins/run.pl?class=Koha::Plugin::Com::RBitTechnology::SmartWithdrawals&amp;method=tool&amp;phase=export&amp;format=tab&amp;predef=[% predef %]">Hodnoty oddělené tabulátory</a></li>
+                    <li><a id="ods" href="/cgi-bin/koha/plugins/run.pl?class=Koha::Plugin::Com::RBitTechnology::SmartWithdrawals&amp;method=tool&amp;phase=export&amp;format=ods&amp;predef=[% predef %]">Tabulka ve formátu Open Document</a></li>
+                </ul>
+            </div>
+    </div>
+
+    <h3>Inteligentní odpisy a přesuny: Zobrazení výsledků</h3>
+
+    <p>Počet nalezených záznamů: [% rows %]</p>
+
+    <!-- Notice our form here has no 'action', this is good, it means that our forms will always get passed back to 'plugins/run.pl'. You could hard code it instead if you prefer -->
+    <form method="get">
+
+    <!-- Always pass these two parameters so the plugin system knows what to execute! -->
+    <input type="hidden" name="class" value="[% CLASS %]"/>
+    <input type="hidden" name="method" value="[% METHOD %]"/>
+
+    [% IF (results) %]
+        <table id="table_reports">
+            <thead>
+                <tr>
+                [% FOREACH col IN columns %]
+                        [% IF col == 'barcode' %]<th>Čárový kód</th>[% END %]
+                        [% IF col == 'title' %]<th>Název titulu</th>[% END %]
+                        [% IF col == 'author' %]<th>Autor</th>[% END %]
+                        [% IF col == 'itype' %]<th>Typ jednotky</th>[% END %]
+                        [% IF col == 'callnumber' %]<th>Signatura</th>[% END %]
+                        [% IF col == 'stocknumber' %]<th>Přírustkové č.</th>[% END %]
+                        [% IF col == 'holdingbranch' %]<th>Aktuální umístění</th>[% END %]
+                        [% IF col == 'replacementprice' %]<th>Nákupní cena</th>[% END %]
+                [% END %]
+                </tr>
+            </thead>
+            <tbody>
+                [% FOREACH row IN results %]
+                <tr>
+                    [% FOREACH col IN columns %]
+                        [% IF col == 'barcode' %]<td>[% row.barcode %]</td>[% END %]
+                        [% IF col == 'title' %]<td>[% row.title %]</td>[% END %]
+                        [% IF col == 'author' %]<td>[% row.author %]</td>[% END %]
+                        [% IF col == 'itype' %]<td>[% row.itemtype %]</td>[% END %]
+                        [% IF col == 'callnumber' %]<td>[% row.itemcallnumber %]</td>[% END %]
+                        [% IF col == 'stocknumber' %]<td>[% row.stocknumber %]</td>[% END %]
+                        [% IF col == 'holdingbranch' %]<td>[% row.holdingbranch %]</td>[% END %]
+                        [% IF col == 'replacementprice' %]<td>[% row.replacementprice %]</td>[% END %]
+                    [% END %]
+                <tr>
+                [% END %]
+            </tbody>
+        </table>
+    [% ELSE %]
+        <div class="dialog message">
+            <h4>Nebyly nalezeny žádné odpovídající záznamy</h4>
+            <a href="/cgi-bin/koha/plugins/run.pl?class=Koha::Plugin::Com::RBitTechnology::SmartWithdrawals&method=tool&step=2">Vytvořit novou předvolbu</a>
+        </div>
+    [% END %]
+
+</div>
+
+[% INCLUDE 'intranet-bottom.inc' %]
