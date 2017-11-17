@@ -1,3 +1,5 @@
+![logo KohaCZ](https://github.com/open-source-knihovna/SmartWithdrawals/blob/master/SmartWithdrawals/koha_cz.png "Logo Česká komunita Koha")
+
 # Úvod
 
 Zásuvný modul 'Inteligentní odpisy a přesuny' byl vytvořen jako nástroj pro systematické vyhledávání jednotek vhodných k odepsání z knižního fondu. Využitím tohoto nástroje si knihovny mohou vybírat kandidáty na vyřazení podle souboru stanovených parametrů. Výběr není subjektivní či pocitový, ale je založen na reálných datech o jednotkách jako je např. stáří jednotky či frekvence výpůjček v určitém období.
