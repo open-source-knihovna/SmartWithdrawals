@@ -27,7 +27,7 @@ Alias /plugin/ "/var/lib/koha/kohadev/plugins/"
 ```
 * Restartujte webserver
 
-Jakmile je nastavení připraveno, budete potřebovat změnit systémovou konfigurační hodnotu UseKohaPlugins v administraci Kohy. Na stránce Nástroje pak najdete odkaz Zásuvné moduly. Aktuální verzi pluginu [stahujte v rekce Releases](https://github.com/open-source-knihovna/SmartWithdrawals/releases).
+Jakmile je nastavení připraveno, budete potřebovat změnit systémovou konfigurační hodnotu UseKohaPlugins v administraci Kohy. Na stránce Nástroje pak najdete odkaz Zásuvné moduly. Aktuální verzi pluginu [stahujte v sekci Releases](https://github.com/open-source-knihovna/SmartWithdrawals/releases).
 
 ## Nastavení specifické pro modul inteligentních odpisů
 
