@@ -12,16 +12,14 @@ use Koha::AuthorisedValues;
 use Koha::ItemTypes;
 use Koha::Libraries;
 
-use Data::Dumper;
-
-our $VERSION = "1.0.0";
+our $VERSION = "1.0.1";
 
 our $metadata = {
     name            => 'Inteligentní odpisy a přesuny',
     author          => 'Radek Šiman',
     description     => 'Tento modul poskytuje nástroje pro efektivní vyhledávání jednotek vhodných k odpisu či přesunům.',
     date_authored   => '2017-11-15',
-    date_updated    => '2017-11-15',
+    date_updated    => '2017-11-17',
     minimum_version => '16.05',
     maximum_version => undef,
     version         => $VERSION
@@ -414,11 +412,6 @@ sub execute_sql {
             $sth->bind_param($i + 1, $bindParams[$i]);
         }
         $sth->execute();
-#print "<pre>";
-#print Dumper($enabled);
-#print Dumper(\@bindParams);
-#print "</pre>";
-#print $query;exit;
 
     return ($sth, @columns);
 }
@@ -455,7 +448,7 @@ sub tool_get_results {
             rows => scalar @results,
             predef => $predefId
         );
-#print Dumper(\@results);exit;
+
         print $template->output();
     }
 
