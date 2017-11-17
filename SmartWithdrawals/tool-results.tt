@@ -84,7 +84,7 @@
     [% ELSE %]
         <div class="dialog message">
             <h4>Nebyly nalezeny žádné odpovídající záznamy</h4>
-            <a href="/cgi-bin/koha/plugins/run.pl?class=Koha::Plugin::Com::RBitTechnology::SmartWithdrawals&method=tool&step=2">Vytvořit novou předvolbu</a>
+            <a href="/cgi-bin/koha/plugins/run.pl?class=Koha::Plugin::Com::RBitTechnology::SmartWithdrawals&method=tool">Zobrazit seznam uložených předvoleb</a>
         </div>
     [% END %]
 

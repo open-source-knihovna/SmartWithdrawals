@@ -251,11 +251,12 @@ sub execute_sql {
 
         my @columns;
         my @queryCols;
+        my $titleFormat = 'CONCAT(\'<a href="/cgi-bin/koha/catalogue/detail.pl?biblionumber=\', items.biblionumber, \'" target="_blank">\', title, \'</a>\') as title';
         while ( my $row = $sth->fetchrow_hashref() ) {
             push( @columns, $row->{colname} );
 
             push( @queryCols, 'barcode')                                if ( $row->{colname} eq 'barcode' );
-            push( @queryCols, 'title')                                  if ( $row->{colname} eq 'title' );
+            push( @queryCols, $titleFormat)                             if ( $row->{colname} eq 'title' );
             push( @queryCols, 'author')                                 if ( $row->{colname} eq 'author' );
             push( @queryCols, 'itemtypes.description as itemtype')      if ( $row->{colname} eq 'author' );
             push( @queryCols, 'itemcallnumber')                         if ( $row->{colname} eq 'callnumber' );
