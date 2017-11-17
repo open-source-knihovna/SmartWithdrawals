@@ -12,7 +12,7 @@ use Koha::AuthorisedValues;
 use Koha::ItemTypes;
 use Koha::Libraries;
 
-our $VERSION = "1.0.1";
+our $VERSION = "1.0.2";
 
 our $metadata = {
     name            => 'Inteligentní odpisy a přesuny',
@@ -419,9 +419,10 @@ sub execute_sql {
 sub tool_get_results {
     my ( $self, $args ) = @_;
     my $cgi = $self->{'cgi'};
+    my $predefId;
 
     if ( defined $cgi->param('save') || defined $cgi->param('save_run') ) {
-        $self->tool_save_predef();
+        $predefId = $self->tool_save_predef();
     }
 
     if ( defined $cgi->param('save') ) {
@@ -433,7 +434,9 @@ sub tool_get_results {
         print $cgi->header(-type => 'text/html',
                            -charset => 'utf-8');
 
-        my $predefId = $cgi->param('predef');
+        if ( !defined $predefId && defined $cgi->param('predef') ) {
+            $predefId = $cgi->param('predef');
+        }
 
         my ($sth, @columns) = $self->execute_sql($predefId);
 
@@ -549,6 +552,8 @@ sub tool_save_predef {
 
     $sth = $dbh->prepare($query);
     $sth->execute( @data );
+
+    return $predef_id;
 }
 
 sub tool_delete_predef {
