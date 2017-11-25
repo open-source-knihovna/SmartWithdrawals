@@ -28,7 +28,7 @@
                 </a>
             </div>
             <div class="btn-group">
-                <button class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" id="format"><i class="fa fa-download"></i> Download <span class="caret"></span></button>
+                <button class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" id="format"><i class="fa fa-download"></i> Stáhnout <span class="caret"></span></button>
                 <ul class="dropdown-menu">
                     <li><a id="csv" href="/cgi-bin/koha/plugins/run.pl?class=Koha::Plugin::Com::RBitTechnology::SmartWithdrawals&amp;method=tool&amp;phase=export&amp;format=csv&amp;predef=[% predef %]">Hodnoty oddělené středníkem</a></li>
                     <li><a id="csv" href="/cgi-bin/koha/plugins/run.pl?class=Koha::Plugin::Com::RBitTechnology::SmartWithdrawals&amp;method=tool&amp;phase=export&amp;format=tab&amp;predef=[% predef %]">Hodnoty oddělené tabulátory</a></li>
