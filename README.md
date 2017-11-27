@@ -39,4 +39,4 @@ Jakmile je nastavení připraveno, budete potřebovat změnit systémovou konfig
 
 Před prvním spuštěním nástroje nejprve zvolte položku "Nastavit" v menu "Akce". Konfigurační stránka umožní vybrat vhodné číselníky autorizovaných hodnot, pomocí nichž budete následně vytvářet a ukládat uživatelské předvolby výběru odepisovaných jednotek. Pokud některý z číselníků nepoužíváte, ponechte ve výběru hodnotu '(neuvedeno)'.
 
-Více informací, jak s nástrojem pracovat naleznete na [wiki](https://github.com/open-source-knihovna/SmartWithdrawals/wiki)
+Více informací, jak s nástrojem pracovat naleznete na [wiki](https://github.com/open-source-knihovna/SmartWithdrawals/wiki/Úvod)
